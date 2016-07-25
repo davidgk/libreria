@@ -2,11 +2,13 @@ package com.codekata.libreria;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.Function;
 
 /**
  * Created by davidgk on 22/07/16.
  */
 public class Carrito {
+
     private Map<String,List<Book>> listaCompras;
     private Editorial editorial;
     public Carrito(Editorial editorial){
@@ -47,15 +49,9 @@ public class Carrito {
 
     }
 
-
-    public BigDecimal checkout() {
-        Double totalamount = 0D;
-        for (String title :listaCompras.keySet()){
-            List<Book> compradosPorTitulo = listaCompras.get(title);
-            totalamount+=compradosPorTitulo
-                    .stream()
-                    .mapToDouble(Book::getPrecio).sum();
-        }
-        return new BigDecimal(totalamount);
+    public Map<String, List<Book>> getListaCompras() {
+        return listaCompras;
     }
+
+
 }
