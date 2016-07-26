@@ -7,8 +7,6 @@ import spock.lang.Specification
  */
 class EscenariosCheckout extends Specification{
 
-
-
     void "test Cuando se decide a liquidar el Carrito el cajero contabiliza el monto de los libros y nos dice el precio total a abonar"(){
         given:
             Carrito carrito = Utils.createEnvironment(3, 2)
@@ -64,7 +62,8 @@ class EscenariosCheckout extends Specification{
     }
 
     /***
-    * TODO : Hacer las validaciones de la tarjeta
+    * TODO :
+     * Hacer las validaciones de la tarjeta
      * hacer los servicios rest reales
      * hacer el modelado de la parte del archivo.
      *

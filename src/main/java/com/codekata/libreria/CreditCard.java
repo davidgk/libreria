@@ -22,6 +22,7 @@ public class CreditCard  {
 
 
     public boolean isValidMedioPago() {
+
         try {
 
         }catch (Exception e){

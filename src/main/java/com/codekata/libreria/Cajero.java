@@ -41,7 +41,7 @@ public class Cajero {
             this.currentSell.getMedioDePago().setTransactionAmount(totalAmount);
             processStatus.status =this.merchantOrderProcessor.doCobro(this.currentSell.getMedioDePago());
         } catch (Exception e) {
-            processStatus.status =0;
+            processStatus.status =1;
             processStatus.message =e.getMessage();
 
         }
