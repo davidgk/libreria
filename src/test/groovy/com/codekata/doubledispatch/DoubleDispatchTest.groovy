@@ -39,4 +39,6 @@ class DoubleDispatchTest  extends Specification {
              "B"    | EnumFuncional.HACIENDO_1
 
     }
+
+
 }
