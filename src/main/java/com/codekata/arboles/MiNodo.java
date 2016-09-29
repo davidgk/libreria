@@ -102,7 +102,6 @@ public class MiNodo {
         return this.amountLevels;
     }
 
-
     public String getArrayBuildedPrinted() {
         StringBuilder result = new StringBuilder().append(myValue);
         if (myNodesChildrens != null) {
