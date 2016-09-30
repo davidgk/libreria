@@ -18,12 +18,12 @@ class ConditionForFunctionsStrategyTest extends Specification {
         strategy.initialize();
     }
 
-    @Unroll("test dado dos nros, 5 y 10,  si elijo la operacion #operation obtendre como resultado #resultexpected")
+    @Unroll("test dado tres nros, #p1, #p2 y #p3  10,  si elijo la operacion #operation y subsiguientemente aplico #anotherOperation obtendre como resultado #resultexpected")
     void "test deseo Crear una estrategia comun basado en functions para operaciones entre dos nros"() {
         given:
-            Double parametroA = 10;
-            Double parametroB = 5;
-            Double parametroC = 2;
+            Double parametroA = p1;
+            Double parametroB = p2;
+            Double parametroC = p3;
         when:
             Double result = ((Double)strategy.runAction(operation).apply(parametroA,parametroB));
             if(anotherOperation != null){
@@ -32,13 +32,14 @@ class ConditionForFunctionsStrategyTest extends Specification {
         then:
             assert result == resultexpected;
         where:
-            operation       | resultexpected | anotherOperation
-            "SUMAR"         | 15D            | null
-            "RESTAR"        | 5D             | null
-            "MULTIPLICAR"   | 50D            | null
-            "DIVIDIR"       | 2D             | null
-            "SUMAR"         | 17D            | "SUMAR"
-            "SUMAR"         | 13D            | "RESTAR"
+            operation       | resultexpected | anotherOperation  | p1  | p2  | p3
+            "SUMAR"         | 16D            | null              | 10  | 6   | 2
+            "RESTAR"        | 4D             | null              | 10  | 6   | 2
+            "MULTIPLICAR"   | 60D            | null              | 10  | 6   | 2
+            "DIVIDIR"       | 2D             | null              | 10  | 5   | 2
+            "SUMAR"         | 17D            | "SUMAR"           | 10  | 5   | 2
+            "SUMAR"         | 13D            | "RESTAR"          | 10  | 5   | 2
+            "SUMAR"         | 30D            | "MULTIPLICAR"     | 10  | 5   | 2
     }
 
 
