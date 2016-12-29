@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.function.BiFunction;
 
 public class Portfolio implements SummarizingAccount{
@@ -65,12 +66,15 @@ public class Portfolio implements SummarizingAccount{
 	
 	public boolean manages(SummarizingAccount account) {
 		BiFunction<SummarizingAccount,AccountTransaction, Boolean > isRegisteredFunction = (accountValue, transactionToCheck) ->
-		{if(accountValue instanceof Portfolio){
-			Portfolio portfolio = (Portfolio) accountValue;
-			if(portfolio.manages(accountValue)){
-				return true;
+		{
+			try {
+				if(((Portfolio) accountValue).manages(accountValue)){
+					return true;
+				}
+			}catch (Exception e){
+				return false;
 			}
-		}return false;
+			return false;
 		};
 		if (!isAccountIsAlreadyManaged(account)){
 			boolean isRegistered =  checkOverAccounts(null, isRegisteredFunction);
